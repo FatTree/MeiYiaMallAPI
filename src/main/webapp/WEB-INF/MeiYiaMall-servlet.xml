@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task-4.2.xsd">
+
+    <!-- set Controller -->
+    <context:component-scan base-package="controller" ><!-- controller都放這裡 -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 配置根檢視 -->
+    <mvc:view-controller path="/" view-name="index"/>
+
+    <!-- fire the annotation feature of Spring MVC -->
+    <mvc:annotation-driven />
+
+    <!-- set the Location of Static files -->
+    <mvc:resources location="/assets/" mapping="/assets/**"></mvc:resources>
+
+    <!-- View -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    <!-- Rresolve CORS -->
+	<mvc:cors>
+        <mvc:mapping path="/**"/>
+        <!--https://spring.io/blog/2015/06/08/cors-support-in-spring-framework-->
+    </mvc:cors>
+</beans>

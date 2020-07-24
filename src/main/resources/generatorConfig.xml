@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- <properties resource="generator.properties"/> -->
+    <classPathEntry location="/Users/linxinfang/.m2/repository/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar"/>
+    <context id="default" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!-- sql -->
+        <jdbcConnection 
+        	driverClass="com.mysql.jdbc.Driver" 
+        	connectionURL="jdbc:mysql://localhost:3306/MALL" 
+        	userId="root"
+            password="mysql">
+        </jdbcConnection>
+        
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- Model generator -->
+        <javaModelGenerator targetPackage="entity" targetProject="MeiYiaMall">
+            <!-- add constructor in model -->
+            <property name="constructorBased" value="true"/>
+            <!-- sub package -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- the created model can be modified? -->
+            <property name="immutable" value="false"/>
+            <!-- trim strings -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        
+        <!-- mapper location -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="MeiYiaMall">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        
+        <javaClientGenerator type="XMLMAPPER" targetPackage="dao" targetProject="MeiYiaMall">
+        </javaClientGenerator>
+        
+        <!-- Sample -->
+        <!-- <table tableName="sensor" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table> -->
+        <table tableName="ACCOUNT" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+        <table tableName="MEMBER" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+        <table tableName="PRODUCT_CATEGORY" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+        <table tableName="PRODUCT" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+        <table tableName="ORDER_LIST" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+        <table tableName="ORDER_ITEM" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+        </table>
+    </context>
+</generatorConfiguration>
